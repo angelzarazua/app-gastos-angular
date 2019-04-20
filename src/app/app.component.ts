@@ -3,6 +3,9 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Router } from '@angular/router';
+import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
+import { DatabaseService } from './database.service';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +13,9 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 })
 export class AppComponent {
   constructor(
+    //private router: Router,
+    private sqlite: SQLite,
+    private dbService : DatabaseService,
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar
@@ -19,8 +25,26 @@ export class AppComponent {
 
   initializeApp() {
     this.platform.ready().then(() => {
+      //this.router.navigateByUrl('login');
       this.statusBar.styleDefault();
+      //this.splashScreen.hide();
+      this.createDB();
+    });
+  }
+
+  createDB(){
+    console.log('ENtraaaaaaa!');
+    this.sqlite.create({
+      name: 'data.db',
+      location: 'default'
+    }).then((db) => {
+      console.log('Executed sql');
+      this.dbService.setDatabase(db);
+      return this.dbService.createTables();
+    }).then(() =>{
       this.splashScreen.hide();
+    }).catch(error =>{
+      console.error(error);
     });
   }
 }

@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title center text-center>Editar Elementos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<form [formGroup]="listItemFormGroup" center text-center>
+  <ion-item>
+    <!--<ion-icon name="person" item-start></ion-icon>-->
+    <ion-label stacked>Nombre:</ion-label>
+    <ion-input text-center type="text" [(ngModel)]="listItem.name" formControlName="name" placeholder="name"></ion-input>
+    <span *ngIf="listItemFormGroup.get('name').touched && listItemFormGroup.get('name').hasError('required')">Required</span>
+  </ion-item>
+  <ion-item>
+    <!--<ion-icon name="paper" item-start></ion-icon>-->
+    <ion-label stacked>Descripcion:</ion-label>
+    <ion-input text-center type="text" [(ngModel)]="listItem.description" formControlName="description" placeholder="name"></ion-input>
+    <span *ngIf="listItemFormGroup.get('description').touched && listItemFormGroup.get('description').hasError('required')">Required</span>
+  </ion-item>
+  <ion-item>
+    <!--<ion-icon name="logo-usd" item-start></ion-icon>-->
+    <ion-label stacked>Precio:</ion-label>
+    <ion-input text-center type="number" [(ngModel)]="listItem.price" formControlName="price" placeholder="Precio"></ion-input>
+    <span *ngIf="listItemFormGroup.get('price').touched && listItemFormGroup.get('price').hasError('required')">Required</span>
+  </ion-item>
+  <ion-item center text-center>
+    <ion-button (click)="takePhoto()"> Nueva foto</ion-button>
+  </ion-item>
+  <ion-item>
+    <ion-img [src]="listItem.image" *ngIf="listItem.image" formControlName="image" style="width:60px; height:30px; margin-left: 120px"></ion-img>
+  </ion-item>
+  <!--   <ion-button type="button" [disabled]="listFormGroup.invalid">Tomar Foto</ion-button> -->
+  <ion-button type="button" (click)="editItemsList()" [disabled]="listItemFormGroup.invalid">Editar</ion-button>
+</form>

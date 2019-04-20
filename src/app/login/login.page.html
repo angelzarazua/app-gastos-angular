@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+<form [formGroup]="formLogin">
+  <ion-item>
+    <ion-input type="email" formControlName="email" placeholder="Email">Email</ion-input>
+    <span *ngIf="formLogin.get('email').touched && formLogin.get('email').hasError('required') ">Required</span>
+    <span *ngIf="formLogin.get('email').touched && formLogin.get('email').hasError('pattern')">Email is invalid</span>
+  </ion-item>
+
+  <ion-item>
+    <ion-input type="password" formControlName="password" placeholder="Password"></ion-input>
+    <span *ngIf="formLogin.get('password').touched && formLogin.get('password').hasError('required') ">Required</span>
+  </ion-item>
+
+
+  <ion-button type="button" (click)="login()" [disabled]="formLogin.invalid">Login</ion-button>
+</form>
+
+
+</ion-content>

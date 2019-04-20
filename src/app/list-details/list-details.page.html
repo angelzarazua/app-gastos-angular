@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Detalles</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="openModalCreateItemList()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-card *ngFor="let item of listItem">
+    <ion-card-header>
+      <ion-card-title>
+        <h3>
+          {{item.name}}
+          <span style="position: absolute; right: 50px; color:black">${{item.price}}</span>
+          <span style="position: absolute; right: 00px; color:black">
+            <ion-buttons (click)="hojaDeAcciones(item)" *ngIf='!status'>
+              <ion-icon slot="icon-only" name="more" style="color:#166ec0; cursor: pointer;"></ion-icon>
+            </ion-buttons>
+          </span>
+        </h3>
+      </ion-card-title>
+      <ion-card-subtitle>
+        <span style="color:rgb(94, 26, 26)">{{item.description}}</span>
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-img [src]="item.image" *ngIf="item.image"></ion-img>
+      <br>
+    </ion-card-content>
+  </ion-card>
+  <!--
+  <ion-card *ngFor="let item of lists">
+    <ion-card-header>
+      <ion-card-title>
+        <h3>
+          {{item.name}}
+          <span style="position: absolute; right: 0px; color: #166ec0">
+            <ion-buttons>${{item?.price}}
+              <ion-icon *ngIf="idStatus==0" slot="icon-only" name="more" (click)="updateItem(item.id)"></ion-icon>
+            </ion-buttons>
+          </span>
+        </h3>
+        <ion-img [src]="photo"></ion-img>
+      </ion-card-title>
+    </ion-card-header>
+  </ion-card>
+-->
+
+
+
+
+
+</ion-content>

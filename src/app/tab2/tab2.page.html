@@ -1,9 +1,17 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab Two
+      Camera
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content padding>
+  <ion-button (click)="takePhoto()">Take Photo</ion-button>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-img [src]="photo"></ion-img>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

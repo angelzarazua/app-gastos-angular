@@ -1,0 +1,9 @@
+<form [formGroup]="listFormGroup">
+  <ion-item>
+    <ion-label>Nombre: </ion-label>
+    <ion-input type="text" formControlName="name" placeholder="Nombre"></ion-input>
+    <span *ngIf="listFormGroup.get('name').touched && listFormGroup.get('name').hasError('required') ">Required</span>
+  </ion-item>
+
+  <ion-button type="button" (click)="crearLista()" [disabled]="listFormGroup.invalid">Crear</ion-button>
+</form>

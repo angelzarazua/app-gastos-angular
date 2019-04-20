@@ -1,5 +1,8 @@
 {
   "name": "practica2",
-  "integrations": {},
-  "type": "angular"
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular",
+  "id": "681c7050"
 }
